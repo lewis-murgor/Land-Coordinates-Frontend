@@ -43,27 +43,32 @@ function SignUp () {
                 <input
                     type="text"
                     placeholder="Username"
+                    className="form-control"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <input
                     type="email"
                     placeholder="Email"
+                    className="form-control"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                     type="password"
                     placeholder="Password"
+                    className="form-control"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <input
                     type="password"
                     placeholder="Confirm Password"
+                    className="form-control"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     );
