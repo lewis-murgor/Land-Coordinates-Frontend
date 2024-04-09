@@ -19,7 +19,11 @@ function Login () {
                 body: JSON.stringify({ username, password })
             });
 
-            if (!response.ok) {
+            if (response.ok) {
+                const data = await response.json();
+                const token = data.token;
+                localStorage.setItem('token', token);
+            } else {
                 throw new Error('Login failed');
             }
 
