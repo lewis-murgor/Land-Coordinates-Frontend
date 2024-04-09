@@ -1,12 +1,12 @@
 //import logo from './logo.svg';
 import './App.css';
-import SignUp from './auth/SignUp';
+import Login from './auth/Login';
 
 function App() {
   return (
     <div>
       <h1>Land Map</h1>
-      <SignUp />
+      <Login />
     </div>
   );
 }
