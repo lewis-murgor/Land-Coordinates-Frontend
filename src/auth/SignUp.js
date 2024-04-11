@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-//import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ENDPOINTS } from "../api";
 
-function SignUp () {
+function SignUp() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    //const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ function SignUp () {
                 throw new Error('Sign-up failed');
             }
 
-            //history.push('/login');
+            navigate('/login');
         } catch (error) {
             console.error('Sign-up error:', error);
         }
