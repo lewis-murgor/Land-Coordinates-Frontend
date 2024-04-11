@@ -1,37 +1,33 @@
-import React, { useEffect } from 'react';
+import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { ENDPOINTS } from '../api';
 
-function Logout () {
+function Logout() {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const logoutUser = async () => {
-            try {
-                const response = await fetch(ENDPOINTS.LOGOUT, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    }
-                });
-    
-                if (response.ok) {
-                    localStorage.removeItem('token');
-                    navigate('/login')
-                } else {
-                    throw new Error('Logout failed');
+    const handleLogout = async () => {
+        try {
+            const response = await fetch(ENDPOINTS.LOGOUT, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Token ${localStorage.getItem('token')}`
                 }
-            } catch (error) {
-                console.error('Logout error:', error);
+            });
+
+            if (response.ok) {
+                localStorage.removeItem('token');
+                navigate('/login');
+            } else {
+                console.error('Logout failed');
             }
-        };
-        logoutUser();
-    }, [navigate]);
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
 
     return (
         <div>
-            <h4>Logging out...</h4>
+            <button onClick={handleLogout}>Logout</button>
         </div>
     );
 };
