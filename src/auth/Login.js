@@ -21,13 +21,15 @@ function Login () {
 
             if (response.ok) {
                 const data = await response.json();
-                const token = data.token;
+                console.log('Response data:', data);
+                const token = data.auth_token;
                 localStorage.setItem('token', token);
+                console.log('Login successful');
+                navigate('/landmap');
             } else {
                 throw new Error('Login failed');
             }
 
-            navigate('/landmap');
         } catch (error) {
             console.error('Login error:', error);
         }
