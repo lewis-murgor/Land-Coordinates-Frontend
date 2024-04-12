@@ -25,7 +25,7 @@ function Login () {
                 const token = data.auth_token;
                 localStorage.setItem('token', token);
                 console.log('Login successful');
-                navigate('/landmap');
+                navigate('/lands');
             } else {
                 throw new Error('Login failed');
             }
