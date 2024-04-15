@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path='/' Component={Welcome}/>
-        <Route exact path='/landmap' Component={Landmap}/>
+        <Route exact path='/map/:id' Component={Landmap}/>
         <Route exact path='/login' Component={Login}/>
         <Route exact path='/signup' Component={SignUp}/>
         <Route exact path='/lands' Component={Lands}/>
