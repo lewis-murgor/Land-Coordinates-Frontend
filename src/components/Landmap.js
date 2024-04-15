@@ -1,40 +1,40 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import MapWithPolyline from './MapWithPolyline';
 import { ENDPOINTS } from '../api';
 
 function Landmap () {
-    const [lands, setLands] = useState([]);
+    const { id } = useParams();
+    const [landName, setLandName] = useState('');
+    const [coordinates, setCoordinates] = useState([]);
 
     useEffect(() => {
-        const fetchLands = async () => {
+        const fetchLandData = async () => {
             try {
-                const response = await fetch(ENDPOINTS.LANDS, {
+                const response = await fetch(`${ENDPOINTS.LANDS}/${id}`, {
                     headers: {
                         Authorization: `Token ${localStorage.getItem('token')}`,
                     },
                 });
+
                 if (!response.ok) {
-                    throw new Error('Failed to fetch land data');
+                    throw new Error('Failed to fetch coordinates');
                 }
-                const data = await response.json();
-                console.log(data)
-                setLands(data);
+                const landData = await response.json();
+                setLandName(landData.name);
+                setCoordinates(landData.coordinates);
             } catch (error) {
-                console.error('Error fetching land data:', error);
+                console.error('Error fetching coordinates:', error);
             }
         };
 
-        fetchLands();
-    }, []);
+        fetchLandData();
+    }, [id]);
 
     return (
         <div>
-            {lands.map((land) => (
-                <div key={land.id}>
-                    <h2>{land.name}</h2>
-                    <MapWithPolyline coordinates={land.coordinates} />
-                </div>
-            ))}
+            <h2>Map of {landName}</h2>
+            <MapWithPolyline coordinates={coordinates} />
         </div>
     );
 };
