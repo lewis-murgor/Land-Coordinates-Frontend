@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ENDPOINTS } from "../api";
+import { Link } from "react-router-dom";
 
 function Lands () {
     const [lands, setLands] = useState([]);
@@ -34,8 +35,24 @@ function Lands () {
                 <li key={land.id}>
                     <div>Name: {land.name}</div>
                     <div>Landmark: {land.landmark}</div>
-                    {/*<div>Coordinates: {land.coordinates}</div>*/}
+                    <div>
+                        Coordinates: 
+                        <ul>
+                            {land.coordinates && typeof land.coordinates === 'object' && Object.keys(land.coordinates).length > 0 ? (
+                                Object.entries(land.coordinates).map(([key, value]) => (
+                                    <li key={key}>
+                                        Latitude: {value.latitude}, Longitude: {value.longitude}
+                                    </li>
+                                ))
+                            ) : (
+                                <li>No coordinates available</li>
+                            )}
+                        </ul>
+                    </div>
                     <div>Area: {land.area}</div>
+                    <Link to={`/map/${land.id}`}>
+                        <button>View Map</button>
+                    </Link>
                 </li>
                 ))}
             </ul>
