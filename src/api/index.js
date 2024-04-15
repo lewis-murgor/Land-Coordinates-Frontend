@@ -5,5 +5,4 @@ export const ENDPOINTS = {
     LOGOUT: `${BASE_URL}/auth/token/logout`,
     SIGNUP: `${BASE_URL}/auth/users/`,
     LANDS: `${BASE_URL}/lands`,
-    LAND: `${BASE_URL}/lands/<int:pk>`,
   };
