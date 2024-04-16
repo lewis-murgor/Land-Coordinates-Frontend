@@ -21,7 +21,6 @@ function Login () {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('Response data:', data);
                 const token = data.auth_token;
                 localStorage.setItem('token', token);
                 console.log('Login successful');
@@ -36,7 +35,7 @@ function Login () {
     };
 
     return (
-        <div>
+        <div className='container'>
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <input 
