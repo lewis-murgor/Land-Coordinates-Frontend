@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import MapWithPolyline from './MapWithPolyline';
 import { ENDPOINTS } from '../api';
+import { loadGoogleMapsScript } from './googleMaps';
 
 function Landmap () {
     const { id } = useParams();
@@ -29,6 +30,17 @@ function Landmap () {
         };
 
         fetchLandData();
+
+        const loadMap = async () => {
+            try {
+                const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+                await loadGoogleMapsScript(apiKey);
+            } catch (error) {
+                console.error('Error loading Google Maps:', error);
+            }
+        };
+
+        loadMap();
     }, [id]);
 
     return (
