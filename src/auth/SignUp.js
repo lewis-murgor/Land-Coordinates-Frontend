@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { ENDPOINTS } from "../api";
+import './auth.css';
 
 function SignUp() {
     const [username, setUsername] = useState('');
@@ -37,39 +38,53 @@ function SignUp() {
     };
 
     return (
-        <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    className="form-control"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    className="form-control"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    className="form-control"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    className="form-control"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                <button type="submit">Sign Up</button>
-            </form>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4"></div>
+                <div className="col-md-4">
+                    <div className='card auth'>
+                        <div className="card-header"><h2>Sign Up</h2></div>
+                        <div className="card-body">
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    type="text"
+                                    placeholder="Username"
+                                    className="form-control"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                                <br />
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    className="form-control"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <br />
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    className="form-control"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <br />
+                                <input
+                                type="password"
+                                placeholder="Confirm Password"
+                                className="form-control"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                />
+                                <br /><br />
+                                <button className="btn btn-primary btn-md auth-button" type="submit">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-4"></div>
+            </div>
         </div>
     );
 };
