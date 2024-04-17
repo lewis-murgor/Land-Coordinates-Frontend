@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ENDPOINTS } from '../api';
 
-function Login () {
+function Login ({ setIsAuthenticated }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,6 +24,7 @@ function Login () {
                 const token = data.auth_token;
                 localStorage.setItem('token', token);
                 console.log('Login successful');
+                setIsAuthenticated(true);
                 navigate('/lands');
             } else {
                 throw new Error('Login failed');
