@@ -1,0 +1,11 @@
+.auth {
+    margin-top: 50%;
+}
+.card-header {
+    text-align: center;
+    font-family: Cookie;
+}
+.auth-button {
+    display: block;
+    margin: auto;
+}
