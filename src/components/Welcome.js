@@ -11,6 +11,7 @@ function Welcome () {
             <main>
                 <div className="row">
                     <div className="col-md-6">
+                        <br /><br />
                         <h4>
                             <strong>
                                 <em>
@@ -22,6 +23,7 @@ function Welcome () {
                         </h4>
                     </div>
                     <div className="col-md-4">
+                    <br />
                         <div className="card">
                             <div className="card-body">
                                 <p className="authenticate">Create an account</p>
