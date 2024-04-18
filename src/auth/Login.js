@@ -42,7 +42,7 @@ function Login ({ setIsAuthenticated }) {
                 <div className='col-md-4'></div>
                 <div className='col-md-4'>
                     <div className='card auth'>
-                        <div className='card-header'><h2>Login</h2></div>
+                        <div className='card-header auth-head'><h2>Login</h2></div>
                         <div className='card-body'>
                             <form onSubmit={handleSubmit}>
                                 <input 
