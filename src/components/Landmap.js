@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import MapWithPolyline from './MapWithPolyline';
 import { ENDPOINTS } from '../api';
 import { loadGoogleMapsScript } from './googleMaps';
+import "./landmap.css";
 
 function Landmap () {
     const { id } = useParams();
@@ -44,8 +45,8 @@ function Landmap () {
     }, [id]);
 
     return (
-        <div>
-            <h2>Map of {landName}</h2>
+        <div className='container landmap'>
+            <h2 className='name'>Map of {landName}:</h2>
             <MapWithPolyline coordinates={coordinates} />
         </div>
     );
