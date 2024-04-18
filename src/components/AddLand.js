@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ENDPOINTS } from "../api";
+import "./addLand.css";
 
 function AddLand () {
     const [formData, setFormData] = useState({
@@ -80,49 +81,79 @@ function AddLand () {
     };
 
     return (
-        <div>
-            <h2>Add Land</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Name:
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} />
-                </label>
+        <div className="container addLand">
+            <div className="row">
+                <div className="col-md-4"></div>
+                <div className="col-md-4">
+                    <div className='card add-land'>
+                        <div className="card-header add-land-head"><h2>Add Land</h2></div>
+                        <div className="card-body">
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    type="text"
+                                    className="form-control" 
+                                    placeholder="Name" 
+                                    name="name" 
+                                    value={formData.name} 
+                                    onChange={handleChange} 
+                                />
+                                <br />
 
-                <label>
-                    Latitude:
-                    <input type="text" name="latitude" value={formData.latitude} onChange={handleChange} />
-                </label>
-                <label>
-                    Longitude:
-                    <input type="text" name="longitude" value={formData.longitude} onChange={handleChange} />
-                </label>
-                
-                <button type="button" onClick={handleAddCoordinate}>
-                    Add Coordinate
-                </button>
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Latitude" 
+                                    name="latitude" 
+                                    value={formData.latitude} 
+                                    onChange={handleChange} 
+                                />
+                                <br />
+                    
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Longitude" 
+                                    name="longitude" 
+                                    value={formData.longitude} 
+                                    onChange={handleChange} 
+                                />
+                                <br />
+                                <button type="button" className="btn btn-primary btn-md" onClick={handleAddCoordinate}>
+                                    Add Coordinate
+                                </button>
 
-                {formData.error && (
-                    <div style={{ color: 'red' }}>{formData.error}</div>
-                )}
+                                {formData.error && (
+                                    <div style={{ color: 'red' }}>{formData.error}</div>
+                                )}
 
-                <ul>
-                    {formData.coordinates.map((coord, index) => (
-                        <li key={index}>
-                            {`Latitude: ${coord.latitude}, Longitude: ${coord.longitude}`}
-                            <button type="button" onClick={() => handleRemoveCoordinate(index)}>
-                                Remove
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+                                <ul>
+                                    {formData.coordinates.map((coord, index) => (
+                                        <li key={index}>
+                                            {`Latitude: ${coord.latitude}, Longitude: ${coord.longitude}`}
+                                            <button type="button" onClick={() => handleRemoveCoordinate(index)}>
+                                                Remove
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
 
-                <label>
-                    Landmark:
-                    <input type="text" name="landmark" value={formData.landmark} onChange={handleChange} />
-                </label>
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Landmark" 
+                                    name="landmark" 
+                                    value={formData.landmark} 
+                                    onChange={handleChange} 
+                                />
+                                <br />
 
-                <button type="submit">Add Land</button>
-            </form>
+                                <button type="submit" className="btn btn-primary btn-md">Add Land</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-4"></div>
+            </div>
         </div>
     );
 };
