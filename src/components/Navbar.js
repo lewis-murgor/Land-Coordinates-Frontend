@@ -8,7 +8,7 @@ function Navbar ({ isAuthenticated, setIsAuthenticated }) {
     return (
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
             <div className='container'>
-                <Link className='navbar-brand' href='/lands'>Land Coordinates</Link>
+                <Link className='navbar-brand nav-head' href='/lands'>Land Coordinates</Link>
                 <div className='collapse navbar-collapse'>
                     <ul className='navbar-nav custom-navbar'>
                         { isAuthenticated ? (
