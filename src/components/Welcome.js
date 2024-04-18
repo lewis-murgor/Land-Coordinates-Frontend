@@ -1,21 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './welcome.css';
 
 function Welcome () {
     return (
-        <div>
+        <div className="container welcome">
             <header>
                 <h1>Welcome to the Land Coordinates website</h1>
             </header>
             <main>
-                <p>Find and manage lands specific coordinates.</p>
-                <br/>
-                <Link to='/login'>
-                    <button>Sign in</button>
-                </Link>
-                <Link to='/signup'>
-                    <button>Create account</button>
-                </Link>
+                <div className="row">
+                    <div className="col-md-6">
+                        <h4>
+                            <strong>
+                                <em>
+                                    Find and manage lands
+                                    <br/>
+                                    with specific coordinates.
+                                </em>
+                            </strong>
+                        </h4>
+                    </div>
+                    <div className="col-md-4">
+                        <div className="card">
+                            <div className="card-body">
+                                <p className="authenticate">Create an account</p>
+                                <Link to='/signup'>
+                                    Sign up
+                                </Link>
+                                <br /><br />
+                                <p className="authenticate">Already have an account?</p>
+                                <Link to='/login'>
+                                    Sign in
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     );
