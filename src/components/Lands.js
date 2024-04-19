@@ -28,6 +28,39 @@ function Lands () {
 
     }, []);
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`${ENDPOINTS.LAND.replace('<int:pk>', id)}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to delete land");
+            }
+
+            setLands(prevLands => prevLands.filter(land => land.id !== id));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const renderDeleteButton = (land) => {
+        const authenticatedUsername = localStorage.getItem('username');
+        if (authenticatedUsername && land.owner_username) {
+            if (land.owner_username === authenticatedUsername) {
+                return (
+                    <button onClick={() => handleDelete(land.id)} className="btn btn-danger ml-2 delete-button">
+                        Delete
+                    </button>
+                );
+            }
+            return null;
+        }
+    };
+
     return (
         <div className="container lands">
             <h2 className="head">Lands:</h2>
@@ -59,6 +92,7 @@ function Lands () {
                                 <Link to={`/map/${land.id}`} className="btn btn-primary">
                                     View Map
                                 </Link>
+                                {renderDeleteButton(land)}
                             </div>
                         </div>
                     </div>
