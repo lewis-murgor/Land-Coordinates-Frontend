@@ -23,7 +23,9 @@ function Login ({ setIsAuthenticated }) {
             if (response.ok) {
                 const data = await response.json();
                 const token = data.auth_token;
+                const username = data.username;
                 localStorage.setItem('token', token);
+                localStorage.setItem('username', username);
                 console.log('Login successful');
                 setIsAuthenticated(true);
                 navigate('/lands');
